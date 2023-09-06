@@ -12,6 +12,7 @@ Azure basics
     * Image -> Windows 10 Pro -> Select size -> set Username and Password
     * Select inbound ports -> allow all -> use existing Windows Server license -> next
     * Leave everything else as default and go to Review + create -> Create
+
     * When deployment is done -> Go to 'Resource groups' -> VM1 -> virtualmachine1
     * Connect -> Native RDP -> Download RDP file -> Open -> give your Username and Password
     
@@ -45,7 +46,7 @@ Azure basics
     * Set subscription -> Create new Resource group 'sqldb1-rg1'
     * Server -> Create new -> 'YOURDBACCOUNTNAME'
     * Set Azure AD admin -> Users -> You should find your name there -> OK
-    * Compute + storage -> I chose the cheapest
+    * Compute + storage -> I choose the cheapest
     * Networking tab -> Public endpoint??
     * Additional settings tab -> Use existing data -> Sample -> AdventureWorksLT
     * Review + create -> 'Create'
