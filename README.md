@@ -37,3 +37,53 @@ Azure basics
       * 'Properties' -> Copy the URL and paste it to browser -> TADAA! 
   </details>
 </summary>
+
+<summary>Create a SQL database
+  <details>
+
+    * SQL databases -> Create SQL database
+    * Set subscription -> Create new Resource group 'sqldb1-rg1'
+    * Server -> Create new -> 'YOURDBACCOUNTNAME'
+    * Set Azure AD admin -> Users -> You should find your name there -> OK
+    * Compute + storage -> I chose the cheapest
+    * Networking tab -> Public endpoint??
+    * Additional settings tab -> Use existing data -> Sample -> AdventureWorksLT
+    * Review + create -> 'Create'
+    * When deployment is done -> Go to 'Resource groups' -> 'db1'
+    * 'Configure access' on 'Getting started' tab -> 'Configure'
+    * Firewall rules -> 'Add your client IPv4 ...' -> 'Save'
+    * Go to 'db1' -> 'Query editor (preview)' from the left -> 'Continue as [your@email.com]'
+    * Make a query 
+    ```
+      SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
+      FROM SalesLT.ProductCategory pc
+      JOIN SalesLT.Product p
+      ON pc.productcategoryid = p.productcategoryid;
+    ```
+    just to see that everything works.
+    * Delete this research group so you don't get any extra costs.
+  </details>
+</summary>
+
+<summary>Working with Azure CLI
+  <details>
+
+    * Install client with brew -> 'brew update && brew install azure-cli'
+    * Login -> 'az login' -> Check version -> 'az --version'
+    * Create research group -> 'az group create --name [yourgroupname] --location eastus2'
+    * Before deploying a Virtual Machine we will validate the template and command by running 
+    the following Azure CLI command, substituting the values with your own, specifying a username and 
+    password and a unique name for the virtual machine DNS label prefix value. 
+    The command should run successfully without error, identify what is causing the error, 
+    modify it and run the command again until it does validate successfully.
+    ```
+    az deployment group validate \
+    --resource-group < resource group created earlier > \
+    --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.compute/vm-simple-windows/azuredeploy.json \
+    --parameters adminUsername=$USERNAME \
+    --parameters adminPassword=$PASSWORD \
+    --parameters dnsLabelPrefix=$DNS_LABEL_PREFIX
+    ```
+    getting a quota error because you are trying to deploy a VM size that exceeds your current limit. Ok Skip this.
+  </details>
+</summary>
